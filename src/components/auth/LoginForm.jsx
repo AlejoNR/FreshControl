@@ -59,9 +59,9 @@ function LoginForm({ onLoginExitoso }) {
         }}>
       </div>
 
-      {/* Lado Izquierdo (Texto e info) */}
+
       <div className="hidden lg:flex flex-col justify-center items-start pl-24 pr-10 w-1/2 z-10 relative">
-        {/* Logo */}
+
         <div className="w-16 h-16 rounded-2xl bg-primary/20 border border-primary/30 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(74,222,128,0.15)] backdrop-blur-md">
           <span className="text-primary text-3xl drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">&#127811;</span>
         </div>
@@ -94,10 +94,10 @@ function LoginForm({ onLoginExitoso }) {
         </div>
       </div>
 
-      {/* Lado Derecho (Formulario) */}
+
       <div className="w-full lg:w-1/2 flex items-center justify-center p-8 z-10 relative">
         <form onSubmit={handleSubmit} className="w-full max-w-[420px] panel p-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative overflow-hidden bg-[#0A1A14]/90 backdrop-blur-2xl border border-white/5 rounded-3xl">
-          {/* Luz superior derecha */}
+
           <div className="absolute -top-32 -right-32 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
 
           <h2 className="text-text text-2xl font-bold mb-1">Bienvenido de vuelta</h2>

@@ -15,6 +15,7 @@ function Sidebar({ vista, setVista }) {
       titulo: 'GESTIÓN',
       items: [
         { id: 'importar', label: 'Importar Catálogo', icono: <i className="fa-solid fa-file-import"></i> },
+        { id: 'reportes', label: 'Reportes FEFO', icono: <i className="fa-solid fa-file-pdf"></i> },
       ],
     },
   ]
