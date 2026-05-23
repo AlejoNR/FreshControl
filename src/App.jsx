@@ -5,6 +5,7 @@ import Login from './pages/Login.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Inventory from './pages/Inventory.jsx'
 import ImportarCatalogo from './pages/ImportarCatalogo.jsx'
+import Usuarios from './pages/Usuarios.jsx'
 import Sidebar from './components/layout/Sidebar.jsx'
 import Topbar from './components/layout/Topbar.jsx'
 
@@ -29,6 +30,7 @@ function App() {
           {vista === 'dashboard' && <Dashboard />}
           {vista === 'inventory' && <Inventory />}
           {vista === 'importar' && <ImportarCatalogo />}
+          {vista === 'usuarios' && <Usuarios />}
         </main>
       </div>
     </div>

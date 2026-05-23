@@ -8,13 +8,32 @@ export async function sembrarDatos() {
   const gateway = new LocalStorageGateway()
 
   const usuarios = await gateway.obtener('usuarios')
+  if (!usuarios) {
+    const bcrypt = await import('bcryptjs');
+    const defaultPassword = bcrypt.hashSync('123456', 10);
 
-  await gateway.guardar('usuarios', [
-    { id: '1', nombre: 'Administrador', email: 'alejandrogaucho1973@gmail.com', password: '123456', rol: 'admin', estado: 'activo' },
-    { id: '2', nombre: 'Operador Bodega', email: 'operador@sigi.com', password: '123456', rol: 'operador', estado: 'activo' },
-    { id: '3', nombre: 'Cuenta Suspendida', email: 'suspendido@sigi.com', password: '123456', rol: 'operador', estado: 'inactivo' },
-    { id: '4', nombre: 'Administrador', email: 'Aldo09300@gmail.com', password: '123456', rol: 'admin', estado: 'activo' },
-  ])
+    await gateway.guardar('usuarios', [
+      { id: '1', nombre: 'Administrador', email: 'admin@sigi.com', password: defaultPassword, rol: 'admin', estado: 'activo' },
+      { id: '2', nombre: 'Operador Bodega', email: 'operador@sigi.com', password: defaultPassword, rol: 'operador', estado: 'activo' },
+      { id: '3', nombre: 'Cuenta Suspendida', email: 'suspendido@sigi.com', password: defaultPassword, rol: 'operador', estado: 'inactivo' },
+      { id: '4', nombre: 'Administrador', email: 'Aldo09300@gmail.com', password: defaultPassword, rol: 'admin', estado: 'activo' },
+    ])
+  } else {
+    // Migración: Si hay usuarios existentes con contraseñas en texto plano, las hasheamos.
+    let modificado = false
+    const bcrypt = await import('bcryptjs');
+    const usuariosMigrados = usuarios.map(u => {
+      const esHash = typeof u.password === 'string' && u.password.startsWith('$2') && u.password.length === 60
+      if (!esHash) {
+        u.password = bcrypt.hashSync(u.password, 10)
+        modificado = true
+      }
+      return u
+    })
+    if (modificado) {
+      await gateway.guardar('usuarios', usuariosMigrados)
+    }
+  }
 
   const inventario = await gateway.obtener('inventario')
   if (!inventario) {
