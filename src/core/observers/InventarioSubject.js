@@ -1,8 +1,4 @@
-/**
- * Sujeto observable. Mantiene la lista de alimentos y la lista de
- * observadores. Cuando el inventario cambia, evalua el estado FEFO y
- * notifica a todos los observadores suscritos.
- */
+
 export class InventarioSubject {
   constructor() {
     this.observadores = []

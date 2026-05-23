@@ -16,6 +16,7 @@ export async function sembrarDatos() {
       { id: '1', nombre: 'Administrador', email: 'admin@sigi.com', password: defaultPassword, rol: 'admin', estado: 'activo' },
       { id: '2', nombre: 'Operador Bodega', email: 'operador@sigi.com', password: defaultPassword, rol: 'operador', estado: 'activo' },
       { id: '3', nombre: 'Cuenta Suspendida', email: 'suspendido@sigi.com', password: defaultPassword, rol: 'operador', estado: 'inactivo' },
+      { id: '4', nombre: 'Administrador', email: 'Aldo09300@gmail.com', password: defaultPassword, rol: 'admin', estado: 'activo' },
     ])
   } else {
     // Migración: Si hay usuarios existentes con contraseñas en texto plano, las hasheamos.

@@ -5,6 +5,7 @@ import { MotorFEFO } from '../core/services/MotorFEFO.js'
 import { InventarioSubject } from '../core/observers/InventarioSubject.js'
 import { UIObserver } from '../core/observers/UIObserver.js'
 import { WebNotificationObserver } from '../core/observers/WebNotificationObserver.js'
+import { EmailJSObserver } from '../core/observers/EmailJSObserver.js'
 import { ColorEstado, EtiquetaEstado } from '../core/enums/EstadoCaducidad.js'
 import AlertPanel from '../components/alerts/AlertPanel.jsx'
 import Loader from '../components/common/Loader.jsx'
@@ -19,19 +20,24 @@ function Dashboard() {
       const repo = new RepositorioInventario(new LocalStorageGateway())
       const lista = await repo.listar()
 
-      // --- Cableado del patron Observer ---
+
       const subject = new InventarioSubject()
       const webObs = new WebNotificationObserver()
       await webObs.solicitarPermiso()
-      // El UIObserver recibe un callback puro; React reacciona dentro de el
+
+
+      const emailObs = new EmailJSObserver('service_4t3phqq', 'template_wp1kyob', 'QgsR08rNb-VsVDJn1', repo.gateway)
+
+
       const uiObs = new UIObserver((evento, datos) => {
         if (evento === 'inventario-actualizado') setAlimentos(datos)
       })
       subject.attach(uiObs)
       subject.attach(webObs)
+      subject.attach(emailObs)
       subjectRef.current = subject
 
-      // setAlimentos del subject dispara notify -> UIObserver + WebNotification
+
       subject.setAlimentos(lista)
       setCargando(false)
     }
@@ -42,10 +48,10 @@ function Dashboard() {
 
   const grupos = MotorFEFO.clasificar(alimentos)
   const tarjetas = [
-    { estado: 'critico',    cantidad: grupos.critico.length },
-    { estado: 'urgente',    cantidad: grupos.urgente.length },
+    { estado: 'critico', cantidad: grupos.critico.length },
+    { estado: 'urgente', cantidad: grupos.urgente.length },
     { estado: 'preventivo', cantidad: grupos.preventivo.length },
-    { estado: 'fresco',     cantidad: grupos.fresco.length },
+    { estado: 'fresco', cantidad: grupos.fresco.length },
   ]
 
   return (
