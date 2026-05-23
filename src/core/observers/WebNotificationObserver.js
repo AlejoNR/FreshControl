@@ -21,8 +21,16 @@ export class WebNotificationObserver extends Observer {
   actualizar(evento, datos) {
     if (evento !== 'alerta-caducidad') return
     if (!this.permisoConcedido || typeof Notification === 'undefined') return
+    
+    // Evitar enviar notificaciones múltiples veces por sesión
+    if (sessionStorage.getItem('notificacion_fefo_enviada') === 'true') {
+      return
+    }
+
     new Notification('Alerta FEFO - FreshControl', {
       body: `${datos.length} producto(s) requieren atencion por caducidad (margen 72h).`,
     })
+
+    sessionStorage.setItem('notificacion_fefo_enviada', 'true')
   }
 }

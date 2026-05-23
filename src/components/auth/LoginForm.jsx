@@ -45,7 +45,7 @@ function LoginForm({ onLoginExitoso }) {
       <div className="w-full max-w-md">
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 rounded-2xl bg-primary/15 border border-primary/40 flex items-center justify-center mb-3">
-            <span className="text-primary text-3xl">&#127811;</span>
+            <i className="fa-solid fa-leaf text-primary text-3xl"></i>
           </div>
           <h1 className="text-text text-2xl font-bold">FreshControl</h1>
           <p className="text-muted text-sm">Sistema de Gestion de Inventarios - SIGI</p>

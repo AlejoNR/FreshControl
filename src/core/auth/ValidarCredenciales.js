@@ -14,7 +14,19 @@ export class ValidarCredenciales extends ManejadorBase {
     const usuarios = (await this.gateway.obtener('usuarios')) || []
     const usuario = usuarios.find((u) => u.email === solicitud.email)
 
-    if (!usuario || usuario.password !== solicitud.password) {
+    if (!usuario) {
+      return this._fallar('ValidarCredenciales', 'Correo o contrasena incorrectos.')
+    }
+    
+    const bcrypt = await import('bcryptjs');
+    let isValid = false;
+    try {
+      isValid = bcrypt.compareSync(solicitud.password, usuario.password);
+    } catch (error) {
+      isValid = solicitud.password === usuario.password;
+    }
+    
+    if (!isValid) {
       return this._fallar('ValidarCredenciales', 'Correo o contrasena incorrectos.')
     }
 

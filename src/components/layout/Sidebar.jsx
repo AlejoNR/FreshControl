@@ -1,26 +1,39 @@
+import { useSession } from '../../context/SessionContext.jsx'
+
 function Sidebar({ vista, setVista }) {
+  const { usuario } = useSession()
+
   const secciones = [
     {
       titulo: 'PRINCIPAL',
       items: [
-        { id: 'dashboard', label: 'Dashboard', icono: '📊' },
-        { id: 'inventory', label: 'Inventario', icono: '📦' },
+        { id: 'dashboard', label: 'Dashboard', icono: <i className="fa-solid fa-chart-line"></i> },
+        { id: 'inventory', label: 'Inventario', icono: <i className="fa-solid fa-boxes-stacked"></i> },
       ],
     },
     {
       titulo: 'GESTIÓN',
       items: [
-        { id: 'importar', label: 'Importar Catálogo', icono: '📥' },
+        { id: 'importar', label: 'Importar Catálogo', icono: <i className="fa-solid fa-file-import"></i> },
       ],
     },
   ]
+
+  if (usuario?.rol === 'admin') {
+    secciones.push({
+      titulo: 'ADMINISTRACIÓN',
+      items: [
+        { id: 'usuarios', label: 'Usuarios', icono: <i className="fa-solid fa-users"></i> },
+      ],
+    })
+  }
 
   return (
     <aside className="w-16 md:w-64 bg-sidebarBg flex flex-col py-6 shrink-0 min-h-screen">
       {/* Logo */}
       <div className="px-4 mb-8 flex items-center gap-2.5">
         <div className="w-9 h-9 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
-          <span className="text-primary text-lg">🍏</span>
+          <i className="fa-solid fa-leaf text-primary text-lg"></i>
         </div>
         <div className="hidden md:block">
           <span className="font-bold text-white text-sm tracking-wide">SIGI</span>
