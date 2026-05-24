@@ -4,7 +4,7 @@ import { RepositorioInventario } from '../core/services/RepositorioInventario.js
 import InventoryTable from '../components/inventory/InventoryTable.jsx'
 import AddFoodModal from '../components/inventory/AddFoodModal.jsx'
 import EditFoodModal from '../components/inventory/EditFoodModal.jsx'
-import AddLoteModal from '../components/inventory/AddLoteModal.jsx'
+
 import Loader from '../components/common/Loader.jsx'
 import { MotorFEFO } from '../core/services/MotorFEFO.js'
 
@@ -13,7 +13,7 @@ function Inventory() {
   const [cargando, setCargando] = useState(true)
   const [modalAdd, setModalAdd] = useState(false)
   const [alimentoEditando, setAlimentoEditando] = useState(null)
-  const [alimentoLote, setAlimentoLote] = useState(null)
+
 
   const [busqueda, setBusqueda] = useState('')
   const [filtroCategoria, setFiltroCategoria] = useState('Todos')
@@ -40,11 +40,7 @@ function Inventory() {
     recargar()
   }
 
-  const handleAgregarLote = async (nuevoRegistro) => {
-    await repo.guardar(nuevoRegistro)
-    setAlimentoLote(null)
-    recargar()
-  }
+
 
   const handleEliminar = async (id) => {
     const confirmar = window.confirm('¿Seguro que deseas eliminar este alimento?')
@@ -116,7 +112,7 @@ function Inventory() {
       </div>
 
       <div className="card overflow-hidden border border-gray-100 shadow-sm">
-        {cargando ? <Loader /> : <InventoryTable alimentos={filtrados} onEliminar={handleEliminar} onEditar={setAlimentoEditando} onAgregarLote={setAlimentoLote} />}
+        {cargando ? <Loader /> : <InventoryTable alimentos={filtrados} onEliminar={handleEliminar} onEditar={setAlimentoEditando} />}
 
         {!cargando && (
           <div className="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-textMuted bg-gray-50/50">
@@ -134,7 +130,7 @@ function Inventory() {
 
       {modalAdd && <AddFoodModal onAgregar={handleAgregar} onCerrar={() => setModalAdd(false)} />}
       {alimentoEditando && <EditFoodModal alimento={alimentoEditando} onActualizar={handleActualizar} onCerrar={() => setAlimentoEditando(null)} />}
-      {alimentoLote && <AddLoteModal alimento={alimentoLote} onAgregarLote={handleAgregarLote} onCerrar={() => setAlimentoLote(null)} />}
+
     </div>
   )
 }

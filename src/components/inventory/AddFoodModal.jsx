@@ -13,6 +13,16 @@ function AddFoodModal({ onAgregar, onCerrar }) {
   })
   const [error, setError] = useState('')
 
+  const getPrefix = (cat) => {
+    switch (cat) {
+      case 'carnico': return 'CAR-'
+      case 'lacteo': return 'LAC-'
+      case 'vegetal': return 'VEG-'
+      case 'seco': return 'SEC-'
+      default: return 'LOT-'
+    }
+  }
+
   const set = (campo, valor) => setDatos((d) => ({ ...d, [campo]: valor }))
 
   const handleGuardar = () => {
@@ -21,6 +31,7 @@ function AddFoodModal({ onAgregar, onCerrar }) {
       // El Factory crea la subclase correcta y aplica sus validaciones
       const alimento = AlimentoFactory.crearAlimento(categoria, {
         ...datos,
+        lote: `${getPrefix(categoria)}${datos.lote || ''}`,
         fechaCaducidad: datos.fechaCaducidad ? new Date(datos.fechaCaducidad).toISOString() : null,
       })
       onAgregar(alimento)
@@ -61,7 +72,13 @@ function AddFoodModal({ onAgregar, onCerrar }) {
             </div>
             <div>
                <label className="block text-textMuted text-xs font-medium uppercase tracking-wide mb-1.5">Unidad</label>
-               <input className="input-light" placeholder="kg, L, und" value={datos.unidad} onChange={(e) => set('unidad', e.target.value)} />
+               <select className="input-light" value={datos.unidad} onChange={(e) => set('unidad', e.target.value)}>
+                 <option value="kg">Kilogramos (kg)</option>
+                 <option value="g">Gramos (g)</option>
+                 <option value="L">Litros (L)</option>
+                 <option value="ml">Mililitros (ml)</option>
+                 <option value="und">Unidades (und)</option>
+               </select>
             </div>
           </div>
 
@@ -72,7 +89,12 @@ function AddFoodModal({ onAgregar, onCerrar }) {
 
           <div>
              <label className="block text-textMuted text-xs font-medium uppercase tracking-wide mb-1.5">Lote</label>
-             <input className="input-light" placeholder="Ej: LOTE-123" value={datos.lote} onChange={(e) => set('lote', e.target.value)} />
+             <div className="flex">
+               <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border bg-inputBg text-textMuted text-sm font-semibold">
+                 {getPrefix(categoria)}
+               </span>
+               <input className="input-light rounded-l-none uppercase" placeholder="Ej: 123" value={datos.lote} onChange={(e) => set('lote', e.target.value.toUpperCase())} />
+             </div>
           </div>
 
           {categoria === 'seco' && (

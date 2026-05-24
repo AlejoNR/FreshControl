@@ -9,6 +9,7 @@ function Sidebar({ vista, setVista }) {
       items: [
         { id: 'dashboard', label: 'Dashboard', icono: <i className="fa-solid fa-chart-line"></i> },
         { id: 'inventory', label: 'Inventario', icono: <i className="fa-solid fa-boxes-stacked"></i> },
+        { id: 'lotes', label: 'Lotes', icono: <i className="fa-solid fa-layer-group"></i> },
       ],
     },
     {
