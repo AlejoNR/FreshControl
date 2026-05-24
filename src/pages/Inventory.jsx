@@ -4,6 +4,7 @@ import { RepositorioInventario } from '../core/services/RepositorioInventario.js
 import InventoryTable from '../components/inventory/InventoryTable.jsx'
 import AddFoodModal from '../components/inventory/AddFoodModal.jsx'
 import EditFoodModal from '../components/inventory/EditFoodModal.jsx'
+import AddLoteModal from '../components/inventory/AddLoteModal.jsx'
 import Loader from '../components/common/Loader.jsx'
 import { MotorFEFO } from '../core/services/MotorFEFO.js'
 
@@ -12,7 +13,8 @@ function Inventory() {
   const [cargando, setCargando] = useState(true)
   const [modalAdd, setModalAdd] = useState(false)
   const [alimentoEditando, setAlimentoEditando] = useState(null)
-  
+  const [alimentoLote, setAlimentoLote] = useState(null)
+
   const [busqueda, setBusqueda] = useState('')
   const [filtroCategoria, setFiltroCategoria] = useState('Todos')
 
@@ -35,6 +37,12 @@ function Inventory() {
   const handleActualizar = async (alimento) => {
     await repo.guardar(alimento) // El repositorio guarda sobrescribiendo si el ID existe
     setAlimentoEditando(null)
+    recargar()
+  }
+
+  const handleAgregarLote = async (nuevoRegistro) => {
+    await repo.guardar(nuevoRegistro)
+    setAlimentoLote(null)
     recargar()
   }
 
@@ -72,17 +80,14 @@ function Inventory() {
         <i className="fa-solid fa-boxes-stacked text-primary text-xl"></i>
         <h1 className="text-primary font-bold text-lg">Inventario ordenado por FEFO</h1>
         <span className="text-textMuted text-xs font-medium ml-2">(fecha de vencimiento más próxima primero)</span>
-        <div className="ml-auto">
-          <a href="#" className="text-primary hover:underline text-sm font-medium">Ver inventario completo <i className="fa-solid fa-arrow-right text-xs ml-1"></i></a>
-        </div>
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 items-center bg-white p-4 rounded-xl shadow-sm border border-gray-100">
         <div className="relative w-full md:w-64">
           <i className="fa-solid fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-          <input 
-            type="text" 
-            placeholder="Buscar alimento..." 
+          <input
+            type="text"
+            placeholder="Buscar alimento..."
             className="w-full pl-9 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm outline-none focus:ring-2 focus:ring-primary/20 transition-all"
             value={busqueda}
             onChange={(e) => setBusqueda(e.target.value)}
@@ -91,14 +96,13 @@ function Inventory() {
 
         <div className="flex flex-wrap gap-2 overflow-x-auto">
           {categoriasMenu.map(cat => (
-            <button 
+            <button
               key={cat.id}
               onClick={() => setFiltroCategoria(cat.id)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${
-                filtroCategoria === cat.id 
-                  ? 'bg-primary text-white shadow-md shadow-primary/20' 
-                  : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
-              }`}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${filtroCategoria === cat.id
+                ? 'bg-primary text-white shadow-md shadow-primary/20'
+                : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
+                }`}
             >
               {cat.icon && <i className={`fa-solid ${cat.icon}`}></i>}
               {cat.label}
@@ -112,8 +116,8 @@ function Inventory() {
       </div>
 
       <div className="card overflow-hidden border border-gray-100 shadow-sm">
-        {cargando ? <Loader /> : <InventoryTable alimentos={filtrados} onEliminar={handleEliminar} onEditar={setAlimentoEditando} />}
-        
+        {cargando ? <Loader /> : <InventoryTable alimentos={filtrados} onEliminar={handleEliminar} onEditar={setAlimentoEditando} onAgregarLote={setAlimentoLote} />}
+
         {!cargando && (
           <div className="p-4 border-t border-gray-100 flex items-center justify-between text-sm text-textMuted bg-gray-50/50">
             <span>Mostrando {filtrados.length} de {alimentos.length} items</span>
@@ -130,6 +134,7 @@ function Inventory() {
 
       {modalAdd && <AddFoodModal onAgregar={handleAgregar} onCerrar={() => setModalAdd(false)} />}
       {alimentoEditando && <EditFoodModal alimento={alimentoEditando} onActualizar={handleActualizar} onCerrar={() => setAlimentoEditando(null)} />}
+      {alimentoLote && <AddLoteModal alimento={alimentoLote} onAgregarLote={handleAgregarLote} onCerrar={() => setAlimentoLote(null)} />}
     </div>
   )
 }

@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-05-24T00:00:00.000Z" agent="Mozilla/5.0" version="21.6.8" type="device">
+  <diagram id="class_diagram" name="FreshControl">
+    <mxGraphModel dx="3000" dy="2000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="2000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MotorFEFO" value="MotorFEFO" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="50" width="260" height="108" as="geometry" />
+        </mxCell>
+        <mxCell id="MotorFEFO_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="MotorFEFO">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="MotorFEFO_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="MotorFEFO">
+          <mxGeometry y="50" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="MotorFEFO_meths" value="+ordenar(alimentos, ahora): Alimento[]&lt;br/&gt;+clasificar(alimentos, ahora): Object&lt;br/&gt;+enVentanaAlerta(alimentos, ahora): Alimento[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="MotorFEFO">
+          <mxGeometry y="58" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="Alimento" value="&lt;i&gt;Alimento&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="50" width="260" height="258" as="geometry" />
+        </mxCell>
+        <mxCell id="Alimento_attrs" value="+id: String&lt;br/&gt;+nombre: String&lt;br/&gt;+cantidad: Number&lt;br/&gt;+unidad: String&lt;br/&gt;+fechaIngreso: String&lt;br/&gt;+fechaCaducidad: String&lt;br/&gt;+lote: String&lt;br/&gt;+categoria: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="Alimento">
+          <mxGeometry y="30" width="260" height="138" as="geometry" />
+        </mxCell>
+        <mxCell id="Alimento_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Alimento">
+          <mxGeometry y="168" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Alimento_meths" value="+validar(): boolean&lt;br/&gt;+horasParaCaducar(ahora): Number&lt;br/&gt;+estadoCaducidad(ahora): String&lt;br/&gt;+obtenerDetalles(): Object&lt;br/&gt;+toJSON(): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="Alimento">
+          <mxGeometry y="176" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="AlimentoFactory" value="AlimentoFactory" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="50" width="260" height="98" as="geometry" />
+        </mxCell>
+        <mxCell id="AlimentoFactory_attrs" value="-registro: Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="AlimentoFactory">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="AlimentoFactory_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="AlimentoFactory">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AlimentoFactory_meths" value="+crearAlimento(categoria, datos): Alimento&lt;br/&gt;+categoriasDisponibles(): String[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="AlimentoFactory">
+          <mxGeometry y="64" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioInventario" value="RepositorioInventario" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="50" width="260" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioInventario_attrs" value="-gateway: Object&lt;br/&gt;-clave: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="RepositorioInventario">
+          <mxGeometry y="30" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioInventario_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="RepositorioInventario">
+          <mxGeometry y="72" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioInventario_meths" value="+listar(): Alimento[]&lt;br/&gt;+guardar(alimento): Alimento&lt;br/&gt;+guardarVarios(alimentos): Alimento[]&lt;br/&gt;+eliminar(id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="RepositorioInventario">
+          <mxGeometry y="80" width="260" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioUsuarios" value="RepositorioUsuarios" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="50" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioUsuarios_attrs" value="-gateway: Object&lt;br/&gt;-clave: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="RepositorioUsuarios">
+          <mxGeometry y="30" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioUsuarios_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="RepositorioUsuarios">
+          <mxGeometry y="72" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="RepositorioUsuarios_meths" value="+listar(): Object[]&lt;br/&gt;+guardar(usuario): Object&lt;br/&gt;+eliminar(id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="RepositorioUsuarios">
+          <mxGeometry y="80" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoCarnico" value="ProductoCarnico" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="350" width="260" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoCarnico_attrs" value="+temperaturaConservacion: Number&lt;br/&gt;+tipoCorte: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoCarnico">
+          <mxGeometry y="30" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoCarnico_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ProductoCarnico">
+          <mxGeometry y="72" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoCarnico_meths" value="+validar(): boolean&lt;br/&gt;+obtenerDetalles(): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoCarnico">
+          <mxGeometry y="80" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoLacteo" value="ProductoLacteo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="350" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoLacteo_attrs" value="+pasteurizado: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoLacteo">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoLacteo_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ProductoLacteo">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoLacteo_meths" value="+obtenerDetalles(): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoLacteo">
+          <mxGeometry y="64" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoSeco" value="ProductoSeco" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="350" width="260" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoSeco_attrs" value="+humedad: Number&lt;br/&gt;+humedadMaxima: Number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoSeco">
+          <mxGeometry y="30" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoSeco_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ProductoSeco">
+          <mxGeometry y="72" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoSeco_meths" value="+validar(): boolean&lt;br/&gt;+obtenerDetalles(): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoSeco">
+          <mxGeometry y="80" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoVegetal" value="ProductoVegetal" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="350" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoVegetal_attrs" value="+organico: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoVegetal">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoVegetal_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ProductoVegetal">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ProductoVegetal_meths" value="+obtenerDetalles(): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ProductoVegetal">
+          <mxGeometry y="64" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="LocalStorageGateway" value="LocalStorageGateway" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1500" y="350" width="260" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="LocalStorageGateway_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="LocalStorageGateway">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="LocalStorageGateway_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="LocalStorageGateway">
+          <mxGeometry y="50" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="LocalStorageGateway_meths" value="+obtener(clave): Object&lt;br/&gt;+guardar(clave, datos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="LocalStorageGateway">
+          <mxGeometry y="58" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="ManejadorBase" value="&lt;i&gt;ManejadorBase&lt;/i&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="350" width="260" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="ManejadorBase_attrs" value="#siguiente: ManejadorBase" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ManejadorBase">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ManejadorBase_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ManejadorBase">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ManejadorBase_meths" value="+setSiguiente(manejador): ManejadorBase&lt;br/&gt;+manejar(solicitud): Object&lt;br/&gt;#_fallar(paso, mensaje): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ManejadorBase">
+          <mxGeometry y="64" width="260" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="InventarioSubject" value="InventarioSubject" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="650" width="260" height="146" as="geometry" />
+        </mxCell>
+        <mxCell id="InventarioSubject_attrs" value="-observadores: Observer[]&lt;br/&gt;-alimentos: Alimento[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="InventarioSubject">
+          <mxGeometry y="30" width="260" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="InventarioSubject_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="InventarioSubject">
+          <mxGeometry y="72" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="InventarioSubject_meths" value="+attach(observador)&lt;br/&gt;+detach(observador)&lt;br/&gt;+notify(evento, datos)&lt;br/&gt;+setAlimentos(alimentos, ahora)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="InventarioSubject">
+          <mxGeometry y="80" width="260" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="Observer" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br/&gt;Observer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="650" width="260" height="91" as="geometry" />
+        </mxCell>
+        <mxCell id="Observer_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="Observer">
+          <mxGeometry y="45" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Observer_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="Observer">
+          <mxGeometry y="65" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="Observer_meths" value="+actualizar(evento, datos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="Observer">
+          <mxGeometry y="73" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="FuenteAlimentos" value="&amp;lt;&amp;lt;interface&amp;gt;&amp;gt;&lt;br/&gt;FuenteAlimentos" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=45;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="650" width="260" height="91" as="geometry" />
+        </mxCell>
+        <mxCell id="FuenteAlimentos_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="FuenteAlimentos">
+          <mxGeometry y="45" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="FuenteAlimentos_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="FuenteAlimentos">
+          <mxGeometry y="65" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="FuenteAlimentos_meths" value="+obtenerDatos(): Array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="FuenteAlimentos">
+          <mxGeometry y="73" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarCredenciales" value="ValidarCredenciales" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="650" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarCredenciales_attrs" value="-gateway: Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarCredenciales">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarCredenciales_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ValidarCredenciales">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarCredenciales_meths" value="+manejar(solicitud): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarCredenciales">
+          <mxGeometry y="64" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarEstado" value="ValidarEstado" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1700" y="650" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarEstado_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarEstado">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarEstado_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ValidarEstado">
+          <mxGeometry y="50" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarEstado_meths" value="+manejar(solicitud): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarEstado">
+          <mxGeometry y="58" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarFormato" value="ValidarFormato" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2000" y="650" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarFormato_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarFormato">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarFormato_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ValidarFormato">
+          <mxGeometry y="50" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarFormato_meths" value="+manejar(solicitud): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarFormato">
+          <mxGeometry y="58" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarRol" value="ValidarRol" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="2300" y="650" width="260" height="76" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarRol_attrs" value="" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarRol">
+          <mxGeometry y="30" width="260" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarRol_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="ValidarRol">
+          <mxGeometry y="50" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="ValidarRol_meths" value="+manejar(solicitud): Object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="ValidarRol">
+          <mxGeometry y="58" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="EmailJSObserver" value="EmailJSObserver" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="850" width="260" height="162" as="geometry" />
+        </mxCell>
+        <mxCell id="EmailJSObserver_attrs" value="-serviceId: String&lt;br/&gt;-templateId: String&lt;br/&gt;-publicKey: String&lt;br/&gt;-gateway: Object&lt;br/&gt;-notificados: Set" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="EmailJSObserver">
+          <mxGeometry y="30" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="EmailJSObserver_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="EmailJSObserver">
+          <mxGeometry y="120" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="EmailJSObserver_meths" value="+actualizar(evento, datos)&lt;br/&gt;+enviarCorreo(producto)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="EmailJSObserver">
+          <mxGeometry y="128" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="UIObserver" value="UIObserver" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="850" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="UIObserver_attrs" value="-callback: Function" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="UIObserver">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="UIObserver_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="UIObserver">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="UIObserver_meths" value="+actualizar(evento, datos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="UIObserver">
+          <mxGeometry y="64" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="WebNotificationObserver" value="WebNotificationObserver" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="850" width="260" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="WebNotificationObserver_attrs" value="-notificados: Set" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="WebNotificationObserver">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="WebNotificationObserver_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="WebNotificationObserver">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="WebNotificationObserver_meths" value="+actualizar(evento, datos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="WebNotificationObserver">
+          <mxGeometry y="64" width="260" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="AdaptadorCatalogoCSV" value="AdaptadorCatalogoCSV" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="850" width="260" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="AdaptadorCatalogoCSV_attrs" value="-textoCSV: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="AdaptadorCatalogoCSV">
+          <mxGeometry y="30" width="260" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="AdaptadorCatalogoCSV_div" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="AdaptadorCatalogoCSV">
+          <mxGeometry y="56" width="260" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="AdaptadorCatalogoCSV_meths" value="-normalizarColumna(col): String&lt;br/&gt;-mapearAlDominio(crudo): Object&lt;br/&gt;-parsearFecha(str): String&lt;br/&gt;+obtenerDatos(): Array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="AdaptadorCatalogoCSV">
+          <mxGeometry y="64" width="260" height="66" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ProductoCarnico" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ProductoLacteo" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ProductoSeco" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ProductoVegetal" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="EmailJSObserver" target="Observer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="UIObserver" target="Observer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="WebNotificationObserver" target="Observer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="AdaptadorCatalogoCSV" target="FuenteAlimentos">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ValidarCredenciales" target="ManejadorBase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ValidarEstado" target="ManejadorBase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ValidarFormato" target="ManejadorBase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="" style="endArrow=block;endFill=0;endSize=12;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ValidarRol" target="ManejadorBase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="1..*" style="endArrow=diamondThin;endFill=0;endSize=16;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="InventarioSubject" target="Observer">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="1..*" style="endArrow=diamondThin;endFill=1;endSize=16;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="InventarioSubject" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="0..1" style="endArrow=diamondThin;endFill=0;endSize=16;html=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ManejadorBase" target="ManejadorBase">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="crea" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="AlimentoFactory" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="opera sobre" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="MotorFEFO" target="Alimento">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="usa" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="RepositorioInventario" target="LocalStorageGateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" value="usa" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="RepositorioUsuarios" target="LocalStorageGateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" value="reconstruye" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="RepositorioInventario" target="AlimentoFactory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="usa" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="ValidarCredenciales" target="LocalStorageGateway">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" value="provee datos" style="endArrow=open;endFill=0;endSize=12;html=1;rounded=0;dashed=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="AdaptadorCatalogoCSV" target="AlimentoFactory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

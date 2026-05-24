@@ -30,6 +30,39 @@ export async function sembrarDatos() {
       }
       return u
     })
+
+    // Asegurar que los usuarios seed existan (por si se agregaron después de la primera siembra)
+    const seedUsers = [
+      { id: '1', nombre: 'Administrador', email: 'admin@sigi.com', rol: 'admin', estado: 'activo' },
+      { id: '2', nombre: 'Operador Bodega', email: 'operador@sigi.com', rol: 'operador', estado: 'activo' },
+      { id: '4', nombre: 'Administrador', email: 'Aldo09300@gmail.com', rol: 'admin', estado: 'activo' },
+    ]
+    
+    const defaultPassword = bcrypt.hashSync('123456', 10)
+
+    for (const seed of seedUsers) {
+      const usuarioExistente = usuariosMigrados.find(u => u.email === seed.email)
+      if (!usuarioExistente) {
+        usuariosMigrados.push({ ...seed, password: defaultPassword })
+        modificado = true
+      } else {
+        // Si ya existe pero no se puede iniciar sesión con 123456, forzar restauración de password y estado
+        let passwordCorrecta = false
+        try {
+          passwordCorrecta = bcrypt.compareSync('123456', usuarioExistente.password)
+        } catch (e) {
+          // Si no es un hash válido o falla la comparación, forzamos re-hash
+        }
+        
+        if (!passwordCorrecta || usuarioExistente.estado !== 'activo' || usuarioExistente.rol !== seed.rol) {
+          usuarioExistente.password = defaultPassword
+          usuarioExistente.estado = 'activo'
+          usuarioExistente.rol = seed.rol
+          modificado = true
+        }
+      }
+    }
+
     if (modificado) {
       await gateway.guardar('usuarios', usuariosMigrados)
     }

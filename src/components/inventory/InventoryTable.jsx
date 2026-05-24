@@ -54,7 +54,7 @@ function formatDateShort(iso) {
   return d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
 }
 
-function InventoryTable({ alimentos, onEliminar, onEditar }) {
+function InventoryTable({ alimentos, onEliminar, onEditar, onAgregarLote }) {
   if (alimentos.length === 0) {
     return <p className="text-textMuted text-sm py-8 text-center bg-white">No se encontraron productos.</p>
   }
@@ -126,6 +126,13 @@ function InventoryTable({ alimentos, onEliminar, onEditar }) {
                       title="Actualizar Alimento"
                     >
                       <i className="fa-solid fa-pen text-xs"></i>
+                    </button>
+                    <button
+                      onClick={() => onAgregarLote(a)}
+                      className="w-7 h-7 rounded flex items-center justify-center text-blue-600 hover:bg-blue-50 transition-colors"
+                      title="Añadir Lote (RF-09)"
+                    >
+                      <i className="fa-solid fa-layer-group text-xs"></i>
                     </button>
                     <button 
                       onClick={() => onEliminar(a.id)} 
