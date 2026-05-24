@@ -14,7 +14,7 @@ function construirCadenaAuth() {
   const formato = new ValidarFormato()
   const credenciales = new ValidarCredenciales(gateway)
   const estado = new ValidarEstado()
-  const rol = new ValidarRol(['admin', 'operador', 'supervisor'])
+  const rol = new ValidarRol(['admin', 'operador'])
 
   formato.setSiguiente(credenciales).setSiguiente(estado).setSiguiente(rol)
   return formato
@@ -108,7 +108,7 @@ function LoginForm({ onLoginExitoso }) {
             <div className="flex gap-3">
               <button
                 type="button"
-                onClick={() => seleccionarRol('admin', 'alejandrogaucho1973@gmail.com', '123456')}
+                onClick={() => seleccionarRol('admin', 'Aldo09300@gmail.com', '123456')}
                 className={`flex-1 py-3 px-4 rounded-xl border flex flex-col items-center justify-center gap-2 transition-all duration-300 ${rolActivo === 'admin' ? 'border-primary/50 bg-primary/10 text-primary shadow-[0_0_15px_rgba(74,222,128,0.1)]' : 'border-white/5 bg-white/5 text-muted hover:bg-white/10'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
