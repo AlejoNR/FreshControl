@@ -57,4 +57,15 @@ export class RepositorioUsuarios {
     await this.gateway.guardar(this.coleccion, usuarios)
     return true
   }
+
+  async cambiarEstado(id, nuevoEstado) {
+    const usuarios = await this.obtenerTodos()
+    const index = usuarios.findIndex(u => u.id === id)
+    if (index === -1) {
+      throw new Error('Usuario no encontrado.')
+    }
+    usuarios[index].estado = nuevoEstado
+    await this.gateway.guardar(this.coleccion, usuarios)
+    return true
+  }
 }

@@ -58,6 +58,22 @@ function Usuarios() {
     }
   }
 
+  const handleCambiarEstado = async (id, estadoActual) => {
+    if (id === usuario.id) {
+      alert("No puedes cambiar tu propio estado.")
+      return
+    }
+    const nuevoEstado = estadoActual === 'activo' ? 'inactivo' : 'activo'
+    try {
+      const repo = new RepositorioUsuarios()
+      await repo.cambiarEstado(id, nuevoEstado)
+      setMensaje({ texto: `Usuario marcado como ${nuevoEstado}.`, tipo: 'exito' })
+      cargarUsuarios()
+    } catch (error) {
+      setMensaje({ texto: error.message, tipo: 'error' })
+    }
+  }
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
@@ -138,7 +154,14 @@ function Usuarios() {
                         {u.estado}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-right">
+                    <td className="px-6 py-4 text-right flex justify-end gap-2">
+                      <button 
+                        onClick={() => handleCambiarEstado(u.id, u.estado)}
+                        disabled={u.id === usuario.id}
+                        className={`${u.estado === 'activo' ? 'text-amber-600 hover:bg-amber-50' : 'text-emerald-600 hover:bg-emerald-50'} px-3 py-1.5 rounded-md transition-colors text-xs font-medium disabled:opacity-30 disabled:cursor-not-allowed`}
+                      >
+                        {u.estado === 'activo' ? 'Suspender' : 'Activar'}
+                      </button>
                       <button 
                         onClick={() => handleEliminar(u.id, u.nombre)}
                         disabled={u.id === usuario.id}

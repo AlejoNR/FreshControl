@@ -7,6 +7,7 @@ import Inventory from './pages/Inventory.jsx'
 import ImportarCatalogo from './pages/ImportarCatalogo.jsx'
 import Reportes from './pages/Reportes.jsx'
 import Usuarios from './pages/Usuarios.jsx'
+import Lotes from './pages/Lotes.jsx'
 import Sidebar from './components/layout/Sidebar.jsx'
 import Topbar from './components/layout/Topbar.jsx'
 
@@ -30,6 +31,7 @@ function App() {
         <main className="flex-1 p-4 md:p-8 overflow-auto">
           {vista === 'dashboard' && <Dashboard />}
           {vista === 'inventory' && <Inventory />}
+          {vista === 'lotes' && <Lotes />}
           {vista === 'importar' && <ImportarCatalogo />}
           {vista === 'reportes' && <Reportes />}
           {vista === 'usuarios' && <Usuarios />}

@@ -127,7 +127,7 @@ function ImportarCatalogo() {
         <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-border pb-6 mb-6 gap-4">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 bg-primaryLt text-primary flex items-center justify-center rounded-xl text-2xl shrink-0">
-              📄
+              <i className="fa-solid fa-file-csv"></i>
             </div>
             <div>
               <h2 className="text-textDark font-semibold text-lg">Carga de Archivos de Proveedor</h2>
@@ -135,7 +135,7 @@ function ImportarCatalogo() {
             </div>
           </div>
           <div className="badge-adapter shrink-0">
-            🔌 Patrón Adapter Activo
+            <i className="fa-solid fa-plug"></i> Patrón Adapter Activo
           </div>
         </div>
 
@@ -146,19 +146,16 @@ function ImportarCatalogo() {
           <div className="space-y-5">
             <div>
               <label className="block text-textDark text-sm font-semibold mb-2">Seleccione el Proveedor de Origen</label>
-              <input 
-                list="proveedores"
+              <select 
                 value={proveedor}
                 onChange={(e) => setProveedor(e.target.value)}
                 className="input-light"
-                placeholder="Ej: Almacenes Éxito"
-              />
-              <datalist id="proveedores">
-                <option value="Distribuidora Local Caquetá" />
-                <option value="Almacenes Éxito" />
-                <option value="Fruver Central" />
-                <option value="Carnes del Sur" />
-              </datalist>
+              >
+                <option value="Distribuidora Local Caquetá">Distribuidora Local Caquetá</option>
+                <option value="Almacenes Éxito">Almacenes Éxito</option>
+                <option value="Fruver Central">Fruver Central</option>
+                <option value="Carnes del Sur">Carnes del Sur</option>
+              </select>
             </div>
 
             <div>
@@ -190,7 +187,7 @@ function ImportarCatalogo() {
             onDrop={handleDrop}
           >
             <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-4 text-2xl shadow-lg shadow-primary/30">
-              ☁️
+              <i className="fa-solid fa-cloud-arrow-up"></i>
             </div>
             <p className="text-textDark font-semibold mb-1">
               {archivo ? archivo.name : 'Arrastre y suelte su archivo aquí'}
@@ -209,7 +206,7 @@ function ImportarCatalogo() {
               onClick={() => inputRef.current?.click()}
               className="btn-ghost border border-border bg-white text-sm py-2 px-5"
             >
-              📂 Explorar equipo
+              <i className="fa-solid fa-folder-open mr-2"></i> Explorar equipo
             </button>
           </div>
         </div>
@@ -232,7 +229,11 @@ function ImportarCatalogo() {
           disabled={!archivo || cargando}
           className="btn-dark w-full shadow-lg shadow-sidebarBg/20"
         >
-          {cargando ? 'Procesando...' : '⚙️ Procesar e Importar Inventario'}
+          {cargando ? (
+            <><i className="fa-solid fa-spinner fa-spin mr-2"></i> Procesando...</>
+          ) : (
+            <><i className="fa-solid fa-gears mr-2"></i> Procesar e Importar Inventario</>
+          )}
         </button>
       </div>
 
@@ -240,7 +241,7 @@ function ImportarCatalogo() {
       <div className="mt-8">
         <div className="flex items-center justify-between mb-4 px-1">
           <h3 className="text-textDark font-semibold flex items-center gap-2">
-            <span>🕒</span> Historial Reciente de Importaciones
+            <span><i className="fa-solid fa-clock-rotate-left"></i></span> Historial Reciente de Importaciones
           </h3>
           <button className="text-primary hover:text-sidebarBg text-xs font-medium transition">
             Ver registro completo
@@ -270,7 +271,7 @@ function ImportarCatalogo() {
                       {new Date(reg.fechaHora).toLocaleString('es-CO', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}
                     </td>
                     <td className="px-5 py-3 text-textMuted flex items-center gap-1.5">
-                      <span className="opacity-50">📄</span> {reg.archivo}
+                      <span className="opacity-50"><i className="fa-solid fa-file-csv"></i></span> {reg.archivo}
                     </td>
                     <td className="px-5 py-3 text-textDark">{reg.proveedor}</td>
                     <td className="px-5 py-3 text-textDark font-medium">{reg.registros}</td>
