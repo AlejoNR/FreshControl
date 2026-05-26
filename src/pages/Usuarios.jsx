@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { RepositorioUsuarios } from '../core/services/RepositorioUsuarios.js'
+import { LocalStorageGateway } from '../core/persistence/LocalStorageGateway.js'
 import { useSession } from '../context/SessionContext.jsx'
 
 function Usuarios() {
@@ -21,7 +22,8 @@ function Usuarios() {
 
   const cargarUsuarios = async () => {
     setCargando(true)
-    const repo = new RepositorioUsuarios()
+    const gateway = new LocalStorageGateway()
+    const repo = new RepositorioUsuarios(gateway)
     const lista = await repo.obtenerTodos()
     setUsuarios(lista)
     setCargando(false)
@@ -49,7 +51,8 @@ function Usuarios() {
     if (!confirmar) return
 
     try {
-      const repo = new RepositorioUsuarios()
+      const gateway = new LocalStorageGateway()
+      const repo = new RepositorioUsuarios(gateway)
       await repo.eliminarCuenta(idAEliminar)
       setMensaje({ texto: 'Usuario eliminado correctamente.', tipo: 'exito' })
       cargarUsuarios()
@@ -65,7 +68,8 @@ function Usuarios() {
     }
     const nuevoEstado = estadoActual === 'activo' ? 'inactivo' : 'activo'
     try {
-      const repo = new RepositorioUsuarios()
+      const gateway = new LocalStorageGateway()
+      const repo = new RepositorioUsuarios(gateway)
       await repo.cambiarEstado(id, nuevoEstado)
       setMensaje({ texto: `Usuario marcado como ${nuevoEstado}.`, tipo: 'exito' })
       cargarUsuarios()
@@ -84,7 +88,8 @@ function Usuarios() {
     setMensaje({ texto: '', tipo: '' })
 
     try {
-      const repo = new RepositorioUsuarios()
+      const gateway = new LocalStorageGateway()
+      const repo = new RepositorioUsuarios(gateway)
       await repo.crearCuenta(formData)
       
       setMensaje({ texto: 'Cuenta creada exitosamente.', tipo: 'exito' })

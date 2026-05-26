@@ -1,9 +1,8 @@
-import { LocalStorageGateway } from '../persistence/LocalStorageGateway.js'
 import bcrypt from 'bcryptjs'
 
 export class RepositorioUsuarios {
-  constructor() {
-    this.gateway = new LocalStorageGateway()
+  constructor(gateway) {
+    this.gateway = gateway
     this.coleccion = 'usuarios'
   }
 
