@@ -1,7 +1,7 @@
 import Badge from '../common/Badge.jsx'
 import { MotorFEFO } from '../../core/services/MotorFEFO.js'
 
-/** Panel de alertas FEFO: muestra los productos en ventana critica/urgente. */
+
 function AlertPanel({ alimentos }) {
   const enAlerta = MotorFEFO.ordenar(MotorFEFO.enVentanaAlerta(alimentos))
 

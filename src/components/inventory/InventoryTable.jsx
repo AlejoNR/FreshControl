@@ -1,4 +1,4 @@
-import { MotorFEFO } from '../../core/services/MotorFEFO.js'
+
 
 function getCategoryIcon(cat) {
   switch (cat.toLowerCase()) {
@@ -30,7 +30,7 @@ function getStatusBadge(estado) {
     preventivo: 'Preventivo',
     fresco: 'Sin alerta'
   }
-  
+
   return (
     <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider ${styles[estado] || styles.fresco}`}>
       <span className={`w-1.5 h-1.5 rounded-full ${colorPoint[estado] || colorPoint.fresco}`}></span>
@@ -79,7 +79,7 @@ function InventoryTable({ alimentos, onEliminar, onEditar }) {
             const horas = Math.round(a.horasParaCaducar())
             const isCritico = a.estadoCaducidad() === 'critico'
             const isUrgente = a.estadoCaducidad() === 'urgente'
-            
+
             let bgIndex = 'bg-emerald-500'
             if (isCritico) bgIndex = 'bg-emerald-500' // Matches the image where numbers are green/yellow/orange
             if (index === 3 || index === 4) bgIndex = 'bg-amber-400'
@@ -88,11 +88,10 @@ function InventoryTable({ alimentos, onEliminar, onEditar }) {
             return (
               <tr key={a.id} className="border-b border-gray-50 hover:bg-gray-50/50 transition-colors">
                 <td className="py-3 px-4 text-center">
-                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-white text-xs font-bold ${
-                    a.estadoCaducidad() === 'critico' ? 'bg-emerald-500' :
-                    a.estadoCaducidad() === 'urgente' ? 'bg-amber-400' :
-                    a.estadoCaducidad() === 'preventivo' ? 'bg-amber-300 text-amber-900' : 'bg-gray-100 text-gray-500'
-                  }`}>
+                  <span className={`inline-flex items-center justify-center w-6 h-6 rounded-md text-white text-xs font-bold ${a.estadoCaducidad() === 'critico' ? 'bg-emerald-500' :
+                      a.estadoCaducidad() === 'urgente' ? 'bg-amber-400' :
+                        a.estadoCaducidad() === 'preventivo' ? 'bg-amber-300 text-amber-900' : 'bg-gray-100 text-gray-500'
+                    }`}>
                     {index + 1}
                   </span>
                 </td>
@@ -120,16 +119,16 @@ function InventoryTable({ alimentos, onEliminar, onEditar }) {
                 </td>
                 <td className="py-3 px-4 text-center">
                   <div className="flex items-center justify-center gap-2">
-                    <button 
-                      onClick={() => onEditar(a)} 
+                    <button
+                      onClick={() => onEditar(a)}
                       className="w-7 h-7 rounded flex items-center justify-center text-emerald-600 hover:bg-emerald-50 transition-colors"
                       title="Actualizar Alimento"
                     >
                       <i className="fa-solid fa-pen text-xs"></i>
                     </button>
 
-                    <button 
-                      onClick={() => onEliminar(a.id)} 
+                    <button
+                      onClick={() => onEliminar(a.id)}
                       className="w-7 h-7 rounded flex items-center justify-center text-red-500 hover:bg-red-50 transition-colors"
                       title="Eliminar Alimento"
                     >

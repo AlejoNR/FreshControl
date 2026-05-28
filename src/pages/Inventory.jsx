@@ -57,7 +57,7 @@ function Inventory() {
     { label: 'Seco', id: 'seco', icon: 'fa-wheat-awn' },
   ]
 
-  // Filter and sort the list
+
   const filtrados = useMemo(() => {
     let lista = alimentos
     if (filtroCategoria !== 'Todos') {

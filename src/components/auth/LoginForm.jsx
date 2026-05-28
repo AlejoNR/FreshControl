@@ -6,7 +6,7 @@ import { ValidarRol } from '../../core/auth/ValidarRol.js'
 import { LocalStorageGateway } from '../../core/persistence/LocalStorageGateway.js'
 
 /**
- * Construye la cadena de responsabilidad (logica 100% del /core).
+
  * formato -> credenciales -> estado -> rol
  */
 function construirCadenaAuth() {
@@ -50,7 +50,7 @@ function LoginForm({ onLoginExitoso }) {
 
   return (
     <div className="min-h-screen bg-[#07130F] flex w-full relative font-sans">
-      {/* Fondo de grid sutil para el lado izquierdo */}
+
       <div
         className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{
